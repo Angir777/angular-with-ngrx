@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+.light { background-color: #fff; color: #000!important; }
+.dark { background-color: #222; color: #fff!important; }
+
+.light .counter {
+    border: 2px solid #444;
+    background-color: #eee;
+}
+
+.dark .counter {
+    border: 2px solid #eee;
+    background-color: #444;
+}
+  

@@ -1,0 +1,10 @@
+.counter {
+    padding: 1rem;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+button {
+    margin-right: 0.5rem;
+}
+  

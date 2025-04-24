@@ -1,0 +1,6 @@
+<div [ngClass]="theme()">
+    <h1>Aktualny motyw: {{ theme() }}</h1>
+    <button (click)="toggleTheme()">
+        Przełącz na {{ theme() === 'light' ? 'ciemny' : 'jasny' }} motyw
+    </button>
+</div>

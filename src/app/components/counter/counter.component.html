@@ -1,0 +1,8 @@
+<div class="counter">
+    <h2>Licznik: {{ count() }}</h2>
+    <p>Ostatnia zmiana: {{ lastModified() || 'Brak' }}</p>
+  
+    <button (click)="increment()">+1</button>
+    <button (click)="decrement()">-1</button>
+    <button (click)="reset()">Reset</button>
+</div>
