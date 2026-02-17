@@ -6,8 +6,9 @@ export interface ThemeState {
   theme: 'light' | 'dark';
 }
 
+// Wartość początkowa
 const initialState: ThemeState = {
-  theme: 'light', // Domyślny motyw
+  theme: 'light',
 };
 
 // Reducer obsługujący akcje zmiany motywu

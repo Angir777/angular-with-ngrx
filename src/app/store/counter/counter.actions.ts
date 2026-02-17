@@ -1,4 +1,11 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { CounterState } from './counter.reducer';
+
+// Akcja inicjalizacji licznika (z localStorage)
+export const initCounter = createAction(
+    '[Counter] Init Counter',
+    props<{ state: CounterState }>()
+);
 
 // Akcja zwiększenia licznika
 export const increment = createAction(

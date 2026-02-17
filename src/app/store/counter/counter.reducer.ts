@@ -1,38 +1,34 @@
 import { createReducer, on } from '@ngrx/store';
-import { increment, decrement, reset } from './counter.actions';
+import { increment, decrement, reset, initCounter } from './counter.actions';
 
+// Interfejs opisujący strukturę stanu licznika
 export interface CounterState {
   count: number;
   lastModified: string | null;
 }
 
-function getInitialState(): CounterState {
-  const saved = localStorage.getItem('counter');
-  if (saved) {
-    try {
-      return JSON.parse(saved) as CounterState;
-    } catch {
-      // fallback jeśli JSON będzie uszkodzony
-    }
-  }
-
-  return {
-    count: 0,
-    lastModified: null,
-  };
-}
+// Wartość początkowa
+export const initialState: CounterState = { 
+  count: 0, 
+  lastModified: null
+};
 
 function getCurrentTimestamp(): string {
   return new Date().toISOString();
 }
 
 export const counterReducer = createReducer(
-  getInitialState(),
+  initialState,
+  on(initCounter, (_, { state }) => ({
+    ...state
+  })),
   on(increment, (state) => ({
+    ...state,
     count: state.count + 1,
     lastModified: getCurrentTimestamp(),
   })),
   on(decrement, (state) => ({
+    ...state,
     count: state.count - 1,
     lastModified: getCurrentTimestamp(),
   })),

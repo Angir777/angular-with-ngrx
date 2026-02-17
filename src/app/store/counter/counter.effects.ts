@@ -1,9 +1,30 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType, provideEffects } from '@ngrx/effects';
-import { increment, decrement, reset } from './counter.actions';
+import { increment, decrement, reset, initCounter } from './counter.actions';
 import { tap, withLatestFrom } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { selectCounterState } from './counter.selectors';
+import { CounterState } from './counter.reducer';
+import { of } from 'rxjs';
+
+// Inicjalizacja przy starcie
+const initCounterEffect = createEffect(
+  () => {
+    const saved = localStorage.getItem('counter');
+
+    if (!saved) {
+      return of(); // pusty observable
+    }
+
+    try {
+      const state = JSON.parse(saved) as CounterState;
+      return of(initCounter({ state }));
+    } catch {
+      return of();
+    }
+  },
+  { functional: true }
+);
 
 // Efekt zapisujący stan licznika i czas do localStorage przy każdej zmianie
 const saveCounterEffect = createEffect(
@@ -22,5 +43,6 @@ const saveCounterEffect = createEffect(
 );
 
 export const provideCounterEffects = provideEffects({
+  initCounterEffect,
   saveCounterEffect
 });
