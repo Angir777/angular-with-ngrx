@@ -15,9 +15,9 @@ export class CounterComponent {
   private store = inject(Store); // Wstrzyknięcie Store NgRx
 
   // Pobranie informacji na temat licznika
-  count = toSignal(this.store.select(selectCount));
-  lastModified = toSignal(this.store.select(selectLastModified));
-  obj = toSignal(this.store.select(selectCounterState));
+  readonly count = toSignal(this.store.select(selectCount));
+  readonly lastModified = toSignal(this.store.select(selectLastModified));
+  readonly obj = toSignal(this.store.select(selectCounterState));
 
   constructor() {
     console.log(this.obj());

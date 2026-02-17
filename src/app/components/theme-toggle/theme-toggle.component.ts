@@ -13,9 +13,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class ThemeToggleComponent {
   private renderer = inject(Renderer2);
-
   private store = inject(Store); // Wstrzyknięcie Store NgRx
-  theme = toSignal(this.store.select(selectTheme)); // Sygnalizacja aktualnego motywu
+  
+  readonly theme = toSignal(this.store.select(selectTheme)); // Sygnalizacja aktualnego motywu
 
   constructor() {
     // Efekt reagujący na zmianę theme i aktualizujący body
