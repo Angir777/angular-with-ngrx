@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { initTheme, setTheme } from './theme.actions';
 
-// Interfejs opisujący strukturę stanu tematu
+// Interfejs opisujący strukturę stanu motywu
 export interface ThemeState {
   theme: 'light' | 'dark';
 }

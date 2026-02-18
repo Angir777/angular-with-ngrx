@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-// Akcja inicjalizacji tematu (z localStorage)
+// Akcja inicjalizacji motywu (z localStorage)
 export const initTheme = createAction(
   '[Theme] Init Theme',
   props<{ theme: 'light' | 'dark' }>()
